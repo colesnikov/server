@@ -41,10 +41,3 @@ def test_invalid_credentials():
     assert "fields" in data, "Поле 'fields' отсутствует в ответе"
     assert isinstance(data["fields"], dict), "Поле 'fields' должно быть словарем"
     assert len(data["fields"]) > 0, "Словарь fields не должен быть пустым"
-def test_500_exists():
-    """Простая фиксация 500 ошибки без деталей"""
-    response = requests.get("http://localhost:3000/error-prone")
-    if response.status_code == 500:
-        pytest.xfail("Известная проблема с 500 ошибкой")
-    else:
-        assert True
